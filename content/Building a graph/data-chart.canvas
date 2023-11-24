@@ -1,0 +1,28 @@
+{
+	"nodes":[
+		{"id":"1498cae6eb1903d1","type":"text","text":"Genome 2 : `data/g2.fasta`","x":-660,"y":-140,"width":280,"height":50,"color":"6"},
+		{"id":"652204fd60716209","type":"text","text":"Genome 3 : `data/g3.fasta`","x":-660,"y":-60,"width":280,"height":50,"color":"6"},
+		{"id":"c426835df20fd0f6","type":"text","text":"Genome 1 : `data/g1.fasta`","x":-660,"y":-220,"width":280,"height":50,"color":"6"},
+		{"id":"004345b89948eb97","type":"text","text":"Concatenate the genomes\n`cat data/*.fasta > data/merge.fasta`","x":-280,"y":20,"width":380,"height":80,"color":"5"},
+		{"id":"ef32f53f616c685d","type":"text","text":"`samtools faidx data/merge.fasta`","x":-260,"y":200,"width":340,"height":60,"color":"5"},
+		{"id":"08bf1b45e1402738","x":-260,"y":-235,"width":220,"height":80,"color":"1","type":"text","text":"Choose a reference (ex: Genome 1)"},
+		{"id":"0a05d76e4916014e","x":-67,"y":-480,"width":280,"height":100,"color":"5","type":"text","text":"Create a tab-separated file containing on each line :\n{seq-name}   {path-to-file}"},
+		{"id":"9bd3a990df363ff0","x":340,"y":-720,"width":800,"height":398,"type":"file","file":"Building a graph/minigraph-cactus.md"},
+		{"id":"e78bcb100ef0a681","x":378,"y":-115,"width":700,"height":400,"type":"file","file":"Building a graph/pggb.md"},
+		{"id":"5eb02fd702212049","type":"text","text":"**minigraph**","x":620,"y":-255,"width":165,"height":60}
+	],
+	"edges":[
+		{"id":"27b30a294fb23c2c","fromNode":"652204fd60716209","fromSide":"right","toNode":"004345b89948eb97","toSide":"left"},
+		{"id":"65d524fdf164904c","fromNode":"1498cae6eb1903d1","fromSide":"right","toNode":"004345b89948eb97","toSide":"left"},
+		{"id":"163b503dd0494363","fromNode":"c426835df20fd0f6","fromSide":"right","toNode":"004345b89948eb97","toSide":"left"},
+		{"id":"368b65ed2a0997f0","fromNode":"004345b89948eb97","fromSide":"bottom","toNode":"ef32f53f616c685d","toSide":"top","label":"indexing fasta file"},
+		{"id":"4f97d1cf19a83622","fromNode":"c426835df20fd0f6","fromSide":"right","toNode":"08bf1b45e1402738","toSide":"left"},
+		{"id":"b7b7ff9fcf59115c","fromNode":"1498cae6eb1903d1","fromSide":"right","toNode":"08bf1b45e1402738","toSide":"left"},
+		{"id":"614fa5f5def9e8cb","fromNode":"652204fd60716209","fromSide":"right","toNode":"08bf1b45e1402738","toSide":"left"},
+		{"id":"acbf9be0d3802666","fromNode":"08bf1b45e1402738","fromSide":"right","toNode":"5eb02fd702212049","toSide":"left"},
+		{"id":"4f155b7c9b1f8a60","fromNode":"08bf1b45e1402738","fromSide":"right","toNode":"0a05d76e4916014e","toSide":"left"},
+		{"id":"714a363e4ddf06a0","fromNode":"0a05d76e4916014e","fromSide":"right","toNode":"9bd3a990df363ff0","toSide":"left"},
+		{"id":"5eecaaeb9da6d078","fromNode":"08bf1b45e1402738","fromSide":"right","toNode":"9bd3a990df363ff0","toSide":"left"},
+		{"id":"7dc8b8efa7e13834","fromNode":"ef32f53f616c685d","fromSide":"right","toNode":"e78bcb100ef0a681","toSide":"left","label":"give the original fasta file"}
+	]
+}

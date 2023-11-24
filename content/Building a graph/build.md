@@ -17,3 +17,4 @@ It exists many tools to build pangenome graphs.
 + minigraph
 + vg
 + pangraph
+Each tool uses it's own formats, data structures, and inputs. You may find a flow [[data-chart]] here to help you find commands and how everything works together.

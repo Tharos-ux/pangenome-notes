@@ -3,7 +3,7 @@ title: Minigraph-cactus
 ---
 # Graph construction with minigraph-cactus
 
-> [!IMPORTANT]\
+> [!IMPORTANT] Beware
 > Many parameters are controlled by the catus config file, and so you need to have [a copy of it](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/src/cactus/cactus_progressive_config.xml) that you edit and use the flag `--configFile my-config.xml` in the dedicated commands.
 
 Here are some timings and disk consumption:
@@ -17,7 +17,7 @@ Here are some timings and disk consumption:
 
 ## Step-by-step walkthrough
 
-> [!WARNING]\
+> [!WARNING] Warning
 > minigraph-cactus uses **toil**, a [pipeline managment system](https://toil.ucsc-cgl.org/) that stores its temporary files in a folder. As of now, if you run step-by-step the pipeline, you won't have any issues, but if you try to recreate on your own one of those steps, or re-run a previously run step, you will encounter errors. Tje safest practice for a standard usecase is to destroy the jobstore manually once the job is finished.
 
 ### Files preparation
@@ -38,7 +38,7 @@ CHM13  ./chm13.fa
 
 Lines with a `#` are interpreted as notes, and will be skipped. Empty lines will also be skipped.
 
-> [!WARNING]\
+> [!WARNING] Warning
 > Strictly don't use `_` in sequence names, nor spaces, nor prefixes (ex: if you have a sequence named `zea252` and a sequence named `zea2`, pipeline will crash. `seq1` and `seq10` also, but not `seq01` and `seq00`)
 
 ### Choosing a reference
@@ -59,7 +59,7 @@ To create graph with sequence in a specific order that you can control, using th
 
 ### Control graph output filtering
 
-> [!WARNING]\
+> [!WARNING] Warning
 > By default, a minigraph-cactus graph does not feature full sequences from the input genome set. Depending on the application, it might hurt downstream analysis, so carefully choose your **filter** and **clip** values in order wto get the graph you want in return!
 
 As of latest versions, `--gfa full clip filter` raises an error. Using instead `--clip 0 --filter 0` on step `cactus-graphmap-join` seems to fix the issue, issuing the `full (.full)` graph. Following the same logic :

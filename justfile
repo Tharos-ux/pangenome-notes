@@ -1,0 +1,2 @@
+build:
+    @npx quartz sync

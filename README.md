@@ -1,20 +1,9 @@
-# Quartz v4
+# [How-to-pangenome](https://tharos-ux.github.io/pangenome-notes/)
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+> [!NOTE]\
+> I'm Siegfried Dubois, a first-year PhD student in the INRIA of Rennes, (France), working on pangenome graphs. Key idea of this repo is to share some of my experience about pangenomes (building, comparison, developpment...). Those are not guidelines but traps I fell into, and that I hope by making this I'll help you avoid!
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
-Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
-
-**If you are looking for Quartz v3, you can find it on the [`hugo` branch](https://github.com/jackyzha0/quartz/tree/hugo).**
-
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
-
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
-
-## Sponsors
-
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+This repo supports github pages [here](https://tharos-ux.github.io/pangenome-notes/) that aims to help to understand pangenome graphs, based upon my experiences:
++ how to build a pangenome graph
++ how to visualize it
++ How to parse and explore it

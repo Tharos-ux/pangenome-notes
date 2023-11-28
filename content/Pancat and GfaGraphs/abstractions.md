@@ -1,0 +1,1 @@
+A series of **Enums** to modeize different characteristics of GFA format.

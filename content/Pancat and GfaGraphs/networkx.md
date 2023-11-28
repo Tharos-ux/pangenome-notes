@@ -1,0 +1,1 @@
+Transforms the GFAGraph into a networkx graph (for visualization and better navigation)

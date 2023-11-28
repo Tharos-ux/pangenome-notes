@@ -1,0 +1,36 @@
+{
+	"nodes":[
+		{"id":"9f71febd9c2a6ab7","type":"file","file":"Pancat and GfaGraphs/abstractions.md","x":-1480,"y":-220,"width":358,"height":130,"color":"4"},
+		{"id":"b7eedb940e82844f","type":"text","text":"Green: module\nRed: object\nYellow: function\nViolet: notes","x":-1240,"y":-440,"width":184,"height":140,"color":"6"},
+		{"id":"d45c2f95db1ec0f2","type":"text","text":"Enum **GFAFormat**: modelizes the different formats of GFA files","x":-680,"y":360,"width":300,"height":90,"color":"1"},
+		{"id":"8a7b6d0dc3488df4","type":"text","text":"Enum **GFALine**: modelizes the different kin of lines of a GFA file","x":-680,"y":-101,"width":300,"height":100,"color":"1"},
+		{"id":"588886cd17fd637d","type":"text","text":"Enum **Orientation**: modelizes the forward/reverse reading direction for nodes","x":-680,"y":40,"width":300,"height":100,"color":"1"},
+		{"id":"6c922c70c5dec298","type":"file","file":"Pancat and GfaGraphs/gfaparser.md","x":180,"y":-16,"width":358,"height":130,"color":"4"},
+		{"id":"1fd6041b7e72cdf7","type":"text","text":"Class **Graph**: GFA graph representation","x":1342,"y":-108,"width":238,"height":92,"color":"1"},
+		{"id":"bf5cdbdb1724344f","type":"file","file":"Pancat and GfaGraphs/graph.md","x":920,"y":-480,"width":400,"height":340,"color":"4"},
+		{"id":"8a8291c9e203e9f2","type":"file","file":"Pancat and GfaGraphs/io.md","x":1180,"y":500,"width":400,"height":130,"color":"4"},
+		{"id":"fa4d97f8d91f7312","type":"text","text":"Class **GFAIO**: implements methods to save graphs","x":1840,"y":522,"width":270,"height":86,"color":"1"},
+		{"id":"09067c72e03e8a2a","type":"file","file":"Pancat and GfaGraphs/networkx.md","x":1575,"y":193,"width":400,"height":178,"color":"4"},
+		{"id":"76579ffd54b4399e","type":"text","text":"Class **GFANetwork**: functions to compute a backbone and render a graph","x":2200,"y":229,"width":290,"height":106,"color":"1"},
+		{"id":"7c476ef77bb4d614","type":"text","text":"Class **GFAParser**: implements static methods for parsing GFA files","x":752,"y":147,"width":335,"height":82,"color":"1"}
+	],
+	"edges":[
+		{"id":"f44ac96185d10382","fromNode":"588886cd17fd637d","fromSide":"right","toNode":"bf5cdbdb1724344f","toSide":"left","color":"2","label":"import"},
+		{"id":"f439f4b908b7dcf5","fromNode":"8a7b6d0dc3488df4","fromSide":"right","toNode":"bf5cdbdb1724344f","toSide":"left","color":"2","label":"import"},
+		{"id":"45417b335556fb7a","fromNode":"9f71febd9c2a6ab7","fromSide":"right","toNode":"588886cd17fd637d","toSide":"left","color":"5","label":"implements"},
+		{"id":"a6ceee7e06b81753","fromNode":"9f71febd9c2a6ab7","fromSide":"right","toNode":"8a7b6d0dc3488df4","toSide":"left","color":"5","label":"implements"},
+		{"id":"eaeac571ab094024","fromNode":"9f71febd9c2a6ab7","fromSide":"right","toNode":"d45c2f95db1ec0f2","toSide":"left","color":"5","label":"implements"},
+		{"id":"8bc08b435cf498ca","fromNode":"8a7b6d0dc3488df4","fromSide":"right","toNode":"6c922c70c5dec298","toSide":"left","color":"2","label":"import"},
+		{"id":"8e02b2a0defb15e2","fromNode":"588886cd17fd637d","fromSide":"right","toNode":"6c922c70c5dec298","toSide":"left","color":"2","label":"import"},
+		{"id":"9e6cb547ab61b969","fromNode":"6c922c70c5dec298","fromSide":"right","toNode":"7c476ef77bb4d614","toSide":"left","color":"5","label":"implements"},
+		{"id":"e728eb62b476e4fb","fromNode":"7c476ef77bb4d614","fromSide":"top","toNode":"bf5cdbdb1724344f","toSide":"left","color":"2","label":"import"},
+		{"id":"42f638775ccb2448","fromNode":"7c476ef77bb4d614","fromSide":"bottom","toNode":"8a8291c9e203e9f2","toSide":"left","color":"2","label":"import"},
+		{"id":"bd08762fd7d19c2b","fromNode":"bf5cdbdb1724344f","fromSide":"right","toNode":"1fd6041b7e72cdf7","toSide":"top","color":"5","label":"implements"},
+		{"id":"620cff14b65e00d4","fromNode":"1fd6041b7e72cdf7","fromSide":"bottom","toNode":"8a8291c9e203e9f2","toSide":"left","color":"2","label":"import"},
+		{"id":"1536ea89fd711d61","fromNode":"d45c2f95db1ec0f2","fromSide":"right","toNode":"8a8291c9e203e9f2","toSide":"left","color":"2","label":"import"},
+		{"id":"e71c18eeb366f691","fromNode":"588886cd17fd637d","fromSide":"right","toNode":"8a8291c9e203e9f2","toSide":"left","color":"2","label":"import"},
+		{"id":"bda8d400a35230e0","fromNode":"8a8291c9e203e9f2","fromSide":"right","toNode":"fa4d97f8d91f7312","toSide":"left","color":"5","label":"implements"},
+		{"id":"80bf9f8004f2137b","fromNode":"1fd6041b7e72cdf7","fromSide":"bottom","toNode":"09067c72e03e8a2a","toSide":"left","color":"2","label":"import"},
+		{"id":"4fd04573edb2c7c3","fromNode":"09067c72e03e8a2a","fromSide":"right","toNode":"76579ffd54b4399e","toSide":"left","color":"5","label":"implements"}
+	]
+}

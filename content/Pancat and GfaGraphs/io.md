@@ -1,0 +1,1 @@
+Static class that implements functions to save graphs (to merge with GFAParser ?)

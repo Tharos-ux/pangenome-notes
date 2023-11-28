@@ -1,0 +1,1 @@
+Parses GFA through static methods of a GFAParser class.

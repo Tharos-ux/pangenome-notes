@@ -3,11 +3,9 @@ title: "PGGB : PanGenome Graph Builder"
 ---
 # Graph construction with PGGB
 
-## Step-by-step walkthrough
-
 ### Files preparation
 
-> [!NOTE]\
+> [!NOTE] Note
 > Fasta must be mereged in a single file, for instance using `cat *.fasta > out.fa`. Then, it needs to be indexed with `samtools faidx out.fa`. Just specify the main `out.fa` file when using PGGB, it will find the indexed file by itself.
 
 ### PGGB output

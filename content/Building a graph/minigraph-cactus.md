@@ -85,3 +85,10 @@ cactus-graphmap-join ./jobstore_$4 --vg $2.vg --outDir ./$2 --outName $4 --refer
 
 Details about steps:
 + `cactus-minigraph` command creates a minigraph with base-level alignment graph by default. It can be change by altering the parameter `minigraphConstructOptions="-c -xggs"` in the cactus config file, accordingly to the [minigraph documentation](https://github.com/lh3/minigraph).
++ It is possible to get a partial graph at the `cactus-align` step, with the flag `--outGFA`
++ With the flag `--gfa full clip filter` (when available), the full graph happen to have many paths labeled `_MINIGRAPH_` whose are decomposition of minigraph nodes.
+
+Pipeline can also be executed in a single command:
+```bash
+cactus-pangenome <jobStorePath> <seqFile> --outDir <output directory> --outName <output file prefix> --reference <reference sample name>
+```

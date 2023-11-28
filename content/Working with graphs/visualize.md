@@ -9,5 +9,5 @@ title: How to visualize a pangenome
 
 ## Static representations
 
-+ [odgi](https://github.com/pangenome/odgi) by the pggb team. Supports 1D and 2D visualizations. 
++ [[odgi]] by the pggb team. Supports 1D and 2D visualizations. 
 + [tubemaps](https://github.com/vgteam/sequenceTubeMap) by the vg team.

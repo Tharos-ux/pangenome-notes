@@ -1,0 +1,3 @@
+---
+title: Compare pangenome graphs
+---

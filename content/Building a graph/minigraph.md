@@ -1,7 +1,7 @@
 ---
 title: Minigraph
 ---
-
+# Graph construction with minigraph
 
 To use [minigraph](https://github.com/lh3/minigraph) on a set of input genomes, with default parameters, you should use this command:
 

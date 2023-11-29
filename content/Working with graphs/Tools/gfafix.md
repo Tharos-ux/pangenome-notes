@@ -12,5 +12,5 @@ To run GFAffix, the command is: `gfaffix <input_gfa> -o <output_gfa>`.
 
 From the definition of [[editions]], I wanted to see how GFAffix impacted the resulting graph and the distance to other graphs. Without any surprise as the tool is present in both pipelines, the impact of running GFAffix is marginal.
 
-![](https://github.com/Tharos-ux/pangenome-notes/blob/v4/imgs/gfaffix_clustering.png)
+![[gfaffix_clustering.png]]
 

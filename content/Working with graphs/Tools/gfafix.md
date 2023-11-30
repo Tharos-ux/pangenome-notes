@@ -1,7 +1,20 @@
 ---
 title: GFAffix
 ---
-Tool is referenced [here](https://github.com/marschall-lab/GFAffix)
+Tool is referenced [here](https://github.com/marschall-lab/GFAffix). It aims to compress shared sequences that are distributed along multiple paths where one path should not change 
+
+# Installation
+Requires rust, and is available through conda.
+
+```bash
+conda create .env-gfaffix
+conda activate .env-gfaffx
+
+conda install -c conda-forge rust
+conda install -c bioconda gfaffix
+
+conda deactivate
+```
 
 To run GFAffix, the command is: `gfaffix <input_gfa> -o <output_gfa>`.
 

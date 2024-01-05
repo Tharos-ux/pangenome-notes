@@ -52,6 +52,13 @@ The reference will satisfy the following properties:
 + Be used to divide the graph into chromosomes
 One can define multiple references, but it won't help for clipping (but for filter?), cyclicity, nor nodes in forward orientation purposes.
 
+> [!WARNING] Warning
+> minigraph-cactus is **NOT RECOMMENDED** (see [this discussion](https://github.com/orgs/ComparativeGenomicsToolkit/discussions/1252)) for genomes that have a higher mash distance than 0.02 from the reference; it may [yield a warning](https://github.com/ComparativeGenomicsToolkit/cactus/blob/v2.7.0/src/cactus/refmap/cactus_minigraph.py#L288-L291) but may not do it properly.
+> Solutions are :
+> + Align with an aligner like **Progressive Cactus** from a tree (`mashtree` can be useful)
+> + Cut down sequences to match the threshold
+> + Try PGGB
+
 ### Control input sequence order
 
 To create graph with sequence in a specific order that you can control, using the argument `minigraphSortInput="none"` disables default sorting by mash distance. It is to be specified in the cactus config file.

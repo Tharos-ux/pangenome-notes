@@ -9,7 +9,10 @@ Tool for detecting bubbles and superbubbles in De-bruijn/variation graphs. Sever
 - Extracting two random paths from each bubble chain for haplotyping
 - Extracting information from long reads aligned to bubble chains
 
-Publication available [here](https://academic.oup.com/bioinformatics/article/38/17/4217/6633304), source code available [here](https://github.com/fawaz-dabbaghieh/bubble_gun).
+> [!IMPORTANT] Publication and availability
+> Publication available [here](https://academic.oup.com/bioinformatics/article/38/17/4217/6633304), source code available [here](https://github.com/fawaz-dabbaghieh/bubble_gun).
 
 > [!WARNING] Warning
 > The function `bfs` in the package starts an infinite loop if target node is on a end of the graph.
+
+The tool, written in **Python**, is both usable in command-line and as imports in other Python scripts/programs. 

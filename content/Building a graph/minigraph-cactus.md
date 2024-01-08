@@ -15,7 +15,7 @@ Here are some timings and disk consumption:
 | Bovine      | Chromosome 28 (47Mb)  | 136MB         | 3           | 1.375 min            | 43Go        | 94MB       | 210MB           |
 | Bovine      | Chromosome 3 (210Mb)  | 620MB         | 3           | 2.625 min            | 71Go        | 280MB      | 550MB           |
 
-## Step-by-step walkthrough
+## Points of attention
 
 > [!WARNING] Warning
 > minigraph-cactus uses **toil**, a [pipeline managment system](https://toil.ucsc-cgl.org/) that stores its temporary files in a folder. As of now, if you run step-by-step the pipeline, you won't have any issues, but if you try to recreate on your own one of those steps, or re-run a previously run step, you will encounter errors. Tje safest practice for a standard usecase is to destroy the jobstore manually once the job is finished.
@@ -63,6 +63,10 @@ One can define multiple references, but it won't help for clipping (but for filt
 
 To create graph with sequence in a specific order that you can control, using the argument `minigraphSortInput="none"` disables default sorting by mash distance. It is to be specified in the cactus config file.
 
+### Handling repetitive senquences 
+
+Taken from the minigraph-cactus paper :
+> Minigraph-Cactus (in common with all MSA tools we know of[24](https://www.biorxiv.org/content/10.1101/2022.10.06.511217v3.full#ref-24)) cannot presently satisfactorily align highly repetitive sequences like satellite arrays, centromeres and telomeres because they lack sufficiently unique subsequences for minigraph to use as alignment seeds. As such, these regions will remain largely unaligned throughout the pipeline and will make the graph difficult to index and map to by introducing vast amounts of redundant sequence. We recommend clipping them out for most applications and provide the option to do so by removing paths with >N bases that do not align to the underlying SV graph constructed with minigraph (**[Figure 1F](https://www.biorxiv.org/content/10.1101/2022.10.06.511217v3.full#F1)**). In preliminary studies of mapping short reads and calling small variants (see below), we found that even more aggressively filtering the graph helps improve accuracy. For this reason, an optional allele-frequency filter is included to remove nodes of the graph present in fewer than N haplotypes and can be used when making indexes for vg giraffe.
 
 ### Control graph output filtering
 
@@ -99,3 +103,41 @@ Pipeline can also be executed in a single command:
 ```bash
 cactus-pangenome <jobStorePath> <seqFile> --outDir <output directory> --outName <output file prefix> --reference <reference sample name>
 ```
+
+## Step-by-step walkthrough
+
+> [!IMPORTANT] Beware
+> Reference documentation [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md). Next statements are issued from my own analysis of the pieline.
+
+At each step, **toil** seems to be called and parameters of the current command are added to it. It may explain why **toil** is lacking some files when each step is executed separately.
+### STEP 1 : minigraph
+Script [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/src/cactus/refmap/cactus_minigraph.py). It simply builds a minigraph graph within a **toil** pipeline, with a cactus seqfile as input.
+
+Inputs :
++ a set of input fasta
+
+In this first step, sequences are ordered (by default) by their mash distance to the reference. GFA is computed within toil. At the end of this step, the [GFA from minigraph is exported](https://github.com/ComparativeGenomicsToolkit/cactus/blob/55a5a3f4cc928b646367610ca76bf9b4f42e4769/src/cactus/refmap/cactus_minigraph.py#L125C31-L125C31).
+
+Are performed :
++ a loading of the cactus seqfile
++ a verification of sample names, given a few rules :
+	+ the "." character is overloaded to specify haplotype
+	+ a file is invalid if it starts with "."
+	+ if the file ends with a ".", there must be one numeric character behind to specify haplotype 
+	+ all sequences names that are prefixed by the reference name are invalid (naming convention for *graphmap-join*)
++ an importation of the sequences from the tree of the seqfile into the **toil** jobstore stored in .fa
++ (if asked so) a [sanitization of the fasta headers](https://github.com/ComparativeGenomicsToolkit/cactus/blob/55a5a3f4cc928b646367610ca76bf9b4f42e4769/src/cactus/preprocessor/checkUniqueHeaders.py#L37)
+>	It will strip everything up to and including last # so HG002#0#chr2 would get changed to just chr2 (and then id=HG002| would be prefixed as above) this keeps redundant information out of the sequence names, otherwise it can be duplicated in the final output.  it also keeps # symbols out of sequence names
++ (if asked so) a mash-distance ordering of the input sequences
++ executes minigraph with parameters in the XML file
+
+In a discussion on [cactus discussions](https://github.com/orgs/ComparativeGenomicsToolkit/discussions/1254) it was noted that parallelism of minigraph comes by taking each chromosome on one different thread (as minigraph does not take into account inter-chromosomal events).
+### STEP 2 : cactus-graphmap
+Script [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/src/cactus/refmap/cactus_graphmap.py). It does the alignment between fasta sequences and the minigraph graph created at step 1.
+
+Inputs :
++ a minigraph graph
++ a set of input fasta
+Outputs :
++ PAF file which aligns each fasta to the contig sequences of the graph
++ multifasta containing graph contigs, treated as an assemby by cactus later on

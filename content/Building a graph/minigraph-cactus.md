@@ -107,9 +107,11 @@ cactus-pangenome <jobStorePath> <seqFile> --outDir <output directory> --outName 
 ## Step-by-step walkthrough
 
 > [!IMPORTANT] Beware
-> Reference documentation [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md). Next statements are issued from my own analysis of the pieline.
+> Reference documentation [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md). Next statements are issued from my own analysis of the pieline. The end-to-end pipeline is accessible [here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/55a5a3f4cc928b646367610ca76bf9b4f42e4769/src/cactus/refmap/cactus_pangenome.py#L316).
 
-At each step, **toil** seems to be called and parameters of the current command are added to it. It may explain why **toil** is lacking some files when each step is executed separately.
+At each step, **toil** seems to be called and parameters of the current command are added to it. It may explain why **toil** is lacking some files when each step is executed separately. When exploring a jobstore, it seems files are splitted in three categories : `files`, `jobs` and `stats`.
+
+Best way to run each step of the pipeline individually seems to be starting from the [end-to-end pipeline](https://github.com/ComparativeGenomicsToolkit/cactus/blob/55a5a3f4cc928b646367610ca76bf9b4f42e4769/src/cactus/refmap/cactus_pangenome.py#L316) and doing modifications from it. However, even there, each of the calls is cluttered with **toil** stuff, and so is almost practically not editable to input our own files into it, without re-writing the pipeline from scratch.
 ### STEP 1 : minigraph
 Script [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/src/cactus/refmap/cactus_minigraph.py). It simply builds a minigraph graph within a **toil** pipeline, with a cactus seqfile as input.
 
@@ -132,12 +134,21 @@ Are performed :
 + executes minigraph with parameters in the XML file
 
 In a discussion on [cactus discussions](https://github.com/orgs/ComparativeGenomicsToolkit/discussions/1254) it was noted that parallelism of minigraph comes by taking each chromosome on one different thread (as minigraph does not take into account inter-chromosomal events).
-### STEP 2 : cactus-graphmap
+### STEP 2A : cactus-graphmap
 Script [can be found here](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/src/cactus/refmap/cactus_graphmap.py). It does the alignment between fasta sequences and the minigraph graph created at step 1.
 
 Inputs :
 + a minigraph graph
 + a set of input fasta
+
 Outputs :
 + PAF file which aligns each fasta to the contig sequences of the graph
 + multifasta containing graph contigs, treated as an assemby by cactus later on
+
+### STEP 2B : cactus graphmap-split
+
+> This script will take the cactus-graphmap output and input and split it up into chromosomes.  This is done after a whole-genome graphmap as we need the whole-genome minigraph alignments to do the chromosome splitting in the first place.  For each chromosome, it will make a PAF, GFA and Seqfile (pointing to chromosome fastas)
+
+### STEP 3 : cactus-align
+
+### STEP 4 : 

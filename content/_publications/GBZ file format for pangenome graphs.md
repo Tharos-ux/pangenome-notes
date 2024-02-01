@@ -1,0 +1,4 @@
+URL: https://pubmed.ncbi.nlm.nih.gov/36179091/
+
+**Motivation:** Pangenome graphs representing aligned genome assemblies are being shared in the text-based Graphical Fragment Assembly format. As the number of assemblies grows, there is a need for a file format that can store the highly repetitive data space efficiently.
+**Results:** We propose the GBZ file format based on data structures used in the Giraffe short-read aligner. The format provides good compression, and the files can be efficiently loaded into in-memory data structures. We provide compression and decompression tools and libraries for using GBZ graphs, and we show that they can be efficiently used on a variety of systems.

@@ -1,0 +1,3 @@
+URL: https://www.biorxiv.org/content/10.1101/2023.04.05.535718v1
+
+Pangenome graphs can represent all variation between multiple genomes, but existing methods for constructing them are biased due to reference-guided approaches. In response, we have developed PanGenome Graph Builder (PGGB), a reference-free pipeline for constructing unbi-ased pangenome graphs. PGGB uses all-to-all whole-genome alignments and learned graph embeddings to build and iteratively refine a model in which we can identify variation, measure conservation, detect recombination events, and infer phylogenetic relationships.

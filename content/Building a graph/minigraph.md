@@ -24,3 +24,5 @@ A pull request was made in 2022, adding [P-lines support to minigraph](https://g
 
 > [!WARNING] Warning
 > minigraph outputs nodes prefixed with `s` ; with some tools (such as odgi) it may cause crashes. To convert those rGFA's to standard GFA files, [you can use gfautil](https://github.com/vgteam/vg/issues/3129)
+
+It may be possible to get some kind of paths in a rGFA using `vg convert` according to [this answer](https://github.com/pangenome/odgi/issues/546#issuecomment-1893382366)

@@ -1,7 +1,0 @@
-{
-	"nodes":[
-		{"id":"8057802cee776f46","x":-80,"y":-380,"width":305,"height":90,"type":"text","text":"Alignement sur pangénome de référence pour identification rapide et efficace de souches"},
-		{"id":"7199ad6e27a9f6b8","x":-80,"y":-260,"width":305,"height":100,"type":"text","text":""}
-	],
-	"edges":[]
-}

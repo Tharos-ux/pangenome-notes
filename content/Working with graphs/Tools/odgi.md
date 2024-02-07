@@ -14,6 +14,25 @@ odgi view -g -i $INPUT > $OUTPUT
 # OUTPUT is a new .gfa file
 # -g stands for "convert to gfa"
 ```
+
+To convert from GFA to odgi, you can use `odgi build`
+## Draw a static render of a graph
+
+To create a static (.png) representation of a graph, two steps are required. The first one is to layout the graph with `odgi layout` to get a layout file (where to position nodes in the static file) than using `odgi draw` to render the final picture.
+First and foremost, before the layout computation, the graph has to be optimized. Interestingly, on graphs from 42 T2T yeast genomes, the graph from [[minigraph-cactus]] was optimized but not the one from [[pggb]].
+
+```bash
+# You can convert the graph in .og format to speed up the process
+odgi build -g graph.gfa -o graph.og
+# If needed, optimize the graph
+odgi sort -i graph.og -O -o graph_opti.og
+# Create the layout
+odgi layout -i graph.og -o layout.lay
+# Draw the final figure
+
+```
+
+
 # Python bindings
 
 > [!WARNING] Warning

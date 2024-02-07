@@ -7,7 +7,7 @@ Get statistics on sequences:
 + Replace string in file: `"s/thing_to_replace/thing_replacing/g" file > out`
 
 Get fast stats on a GFA file:
-+ Print all number of lines types: `<file.txt sed 's/^\(.\).*/\1/' | sort | uniq -c` 
++ Print all number of lines types: `<graph.gfa sed 's/^\(.\).*/\1/' | sort | uniq -c` 
 
 Schueldule jobs on SLURM cluster:
 + See [here](https://stackoverflow.com/questions/60583279/how-to-make-sbatch-job-run-after-a-previous-one-has-completed) to chain jobs

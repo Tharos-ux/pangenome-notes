@@ -41,6 +41,10 @@ Lines with a `#` are interpreted as notes, and will be skipped. Empty lines will
 > [!WARNING] Warning
 > Strictly don't use `_` in sequence names, nor spaces, nor prefixes (ex: if you have a sequence named `zea252` and a sequence named `zea2`, pipeline will crash. `seq1` and `seq10` also, but not `seq01` and `seq00`)
 
+### Known graph inconsistencies
+As i dug deep in pangenome graphs, I remarked some weird behaviors exposed by minigraph-cactus, such as the following:
+- A chain of nodes, used in a single genome, can exist in the graph. They consist of a single node, fraction in many small ones, that have no reasons to be there (no variations, no alternative paths, no filtering nor clipping on the graph).
+- Some edges that exists according to the paths in the graph are not referenced into the edges list, if another edge with an opposite direction exists; however, it is not 100% consistent: some cases exists where both edges are referenced.
 ### Choosing a reference
 
 The reference will satisfy the following properties:
@@ -50,6 +54,7 @@ The reference will satisfy the following properties:
 + Be a "reference-sense" path in vg/gbz and will therefore be indexably for fast coordinate lookup
 + Be the basis for the output VCF and therefore won't appear as a sample in the VCF
 + Be used to divide the graph into chromosomes
++ You may select multiple genomes as references
 One can define multiple references, but it won't help for clipping (but for filter?), cyclicity, nor nodes in forward orientation purposes.
 
 > [!WARNING] Warning
@@ -58,6 +63,11 @@ One can define multiple references, but it won't help for clipping (but for filt
 > + Align with an aligner like **Progressive Cactus** from a tree (`mashtree` can be useful)
 > + Cut down sequences to match the threshold
 > + Try PGGB
+
+### Build graph from multifasta files
+In the case you build from multiple individuals (files) with many entries (fasta fields), each . You will find reference to the files in the W-lines:
++ the name given to the sample (cactus pipeline file) will be **in the first field**.
++ the name of each fasta header will be **in the third field**.
 
 ### Control input sequence order
 

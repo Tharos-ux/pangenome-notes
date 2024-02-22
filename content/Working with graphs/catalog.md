@@ -8,6 +8,7 @@ This section will try to cover as much tools as it can, pointing to existing cat
 
 Known catalogs or blogs:
 + [Catalog](https://pangenome.github.io/) from the PGGB team
++ [awesome-pangenomes](https://github.com/colindaven/awesome-pangenomes) by Colin Davenport
 
 Tools:
 + [[bubblegun]], a bubble and superbubble caller

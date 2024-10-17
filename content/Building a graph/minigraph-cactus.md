@@ -90,6 +90,9 @@ Those values can also be specified in the cactus parameters file.
 
 ## General commands
 
+> [!WARNING] Warning
+> minigraph-cactus uses **docker** by default for specific commands. However, depending on the installation, it may yield permissions errors (for instance 2.8.2 on slurm with conda). A quick fix is to add the flag `--binariesMode singularity` to each command involving cactus.
+
 ```bash
 # $1 -> path to .txt file describing where fasta files are
 # $2 -> output path and name for the final graph (without extension)
@@ -162,3 +165,10 @@ Outputs :
 ### STEP 3 : cactus-align
 
 ### STEP 4 : 
+
+
+# Extracting variants when constructing the graph
+The minigraph-cactus pipeline has [two outputs](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md#vcf-normalization): a "raw" and a "filtered". The filtered is going through [[vcfbub]] and removes nested variants and the ones that are greater than 100kb. 
+
+> [!IMPORTANT] Beware
+> "Since VCF remains more widely-supported than these formats, we implemented a VCF exporter in vg (vg deconstruct) that is run as part of the Minigraph-Cacatus pipeline. It outputs a site for each snarl in the graph. It uses the haplotype index (GBWT) to  enumerate all haplotypes that traverse the site, which allows it to compute phased genotypes. For each allele, the corresponding path through the graph is stored in the AT (Allele Traversal) tag. Snarls can be nested, and this information is specified in the LV (Level) and PS (Parent Snarl) tags, which needs to be taken into account when interpreting the VCF. Any phasing information in the input assemblies is preserved in the VCF." -- taken for the minigraph-cactus publication.:

@@ -2,7 +2,7 @@
 title: VG toolkit
 ---
 > [!WARNING] Warning
-> vg commands on graphs that are compressed **does not work**. It will raise a 'invalid graph type' error.
+> vg commands on graphs that are compressed (.gz files) **does not work**. It will raise a 'invalid graph type' error.
 
 ## Convert rGFA to somewhat of a GFA1
 The command `vg convert -Wf -r 89 graph_rgfa.gfa > graph_gfa1.gfa` adds the variations and the reference as paths in the graphs. Those paths __**do not describe genomes**__ as rGFA is not a container that keeps this information (erases SNPs and lose paths), but it can help to have a compatible GFA1 file.
@@ -17,6 +17,7 @@ The command `vg convert -Wf -r 89 graph_rgfa.gfa > graph_gfa1.gfa` adds the vari
 ## Call bubbles on graph to get variants
 `vg deconstruct -e -a -p ref graph.gfa > variants.vcf`
 + `-p [STR]` stands for the path to use as reference to call variants
++ for W-lines, paths are referenced with two parts : link those with a '#' sign.
 Generally, post-treatment is done on those vcf files, using **vcfbub** and **vcfwave** 
 ```
 # For some reason input must be gzipped, gzip file.vcf

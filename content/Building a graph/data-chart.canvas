@@ -1,16 +1,22 @@
 {
 	"nodes":[
+		{"id":"c4b376487573eb22","type":"group","x":-1460,"y":-520,"width":687,"height":796,"label":"Transform sequences into chromosomes"},
 		{"id":"1498cae6eb1903d1","type":"text","text":"Genome 2 : `data/g2.fasta`","x":-660,"y":-140,"width":280,"height":50,"color":"6"},
 		{"id":"652204fd60716209","type":"text","text":"Genome 3 : `data/g3.fasta`","x":-660,"y":-60,"width":280,"height":50,"color":"6"},
 		{"id":"c426835df20fd0f6","type":"text","text":"Genome 1 : `data/g1.fasta`","x":-660,"y":-220,"width":280,"height":50,"color":"6"},
-		{"id":"9bd3a990df363ff0","type":"file","file":"Building a graph/minigraph-cactus.md","x":378,"y":-700,"width":822,"height":300,"color":"4"},
-		{"id":"0a05d76e4916014e","type":"text","text":"Create a tab-separated file containing on each line :\n{seq-name}   {path-to-file}","x":-60,"y":-640,"width":280,"height":100,"color":"5"},
 		{"id":"5d741847cb333a15","type":"text","text":"edit parameters file","x":-60,"y":-760,"width":280,"height":60,"color":"1"},
-		{"id":"9c72f4c434a7b6f7","type":"file","file":"Building a graph/minigraph.md","x":378,"y":-260,"width":822,"height":340,"color":"4"},
-		{"id":"e78bcb100ef0a681","type":"file","file":"Building a graph/pggb.md","x":378,"y":180,"width":822,"height":360,"color":"4"},
-		{"id":"08bf1b45e1402738","type":"text","text":"Choose a reference (ex: Genome 1)","x":-260,"y":-382,"width":220,"height":80,"color":"1"},
+		{"id":"27f747b09b1ff91d","type":"text","text":"","x":-1185,"y":48,"width":250,"height":60},
+		{"id":"a0aefc56e5f520f2","type":"file","file":"content/_imgs/chomosome_partition-2.png","x":-1440,"y":-92,"width":647,"height":348},
+		{"id":"3bcda8759d626a9c","type":"file","file":"content/_imgs/chromosome_partition.png","x":-1440,"y":-480,"width":647,"height":348},
+		{"id":"ae6f57e96fa6b718","type":"file","file":"content/_imgs/build-tree-mgc.png","x":-360,"y":-1111,"width":560,"height":301},
+		{"id":"b02aeefb9215f6bb","type":"text","text":"phylogenetic tree (pantools/KMC)","x":-60,"y":-840,"width":280,"height":60,"color":"1"},
+		{"id":"9bd3a990df363ff0","type":"file","file":"content/Building a graph/minigraph-cactus.md","x":378,"y":-700,"width":822,"height":300,"color":"4"},
+		{"id":"0a05d76e4916014e","type":"text","text":"Create a tab-separated file containing on each line :\n{seq-name}   {path-to-file}\ncan contain a nw line for the tree on header","x":-60,"y":-660,"width":280,"height":180,"color":"5"},
+		{"id":"9c72f4c434a7b6f7","type":"file","file":"content/Building a graph/minigraph.md","x":378,"y":-260,"width":822,"height":340,"color":"4"},
+		{"id":"e78bcb100ef0a681","type":"file","file":"content/Building a graph/pggb.md","x":378,"y":180,"width":822,"height":360,"color":"4"},
 		{"id":"004345b89948eb97","type":"text","text":"Concatenate the genomes\n`cat data/*.fasta > data/merge.fasta`","x":-180,"y":100,"width":380,"height":80,"color":"5"},
-		{"id":"ef32f53f616c685d","type":"text","text":"`samtools faidx data/merge.fasta`","x":-320,"y":480,"width":340,"height":60,"color":"5"}
+		{"id":"ef32f53f616c685d","type":"text","text":"`samtools faidx data/merge.fasta`","x":-320,"y":480,"width":340,"height":60,"color":"5"},
+		{"id":"08bf1b45e1402738","type":"text","text":"Choose a reference (ex: Genome 1)","x":-210,"y":-306,"width":220,"height":80,"color":"1"}
 	],
 	"edges":[
 		{"id":"27b30a294fb23c2c","fromNode":"652204fd60716209","fromSide":"right","toNode":"004345b89948eb97","toSide":"left"},
@@ -28,6 +34,10 @@
 		{"id":"0a205c342bf04539","fromNode":"08bf1b45e1402738","fromSide":"right","toNode":"9c72f4c434a7b6f7","toSide":"left"},
 		{"id":"5e6b9f181ac46305","fromNode":"652204fd60716209","fromSide":"right","toNode":"9c72f4c434a7b6f7","toSide":"left"},
 		{"id":"55654e166ef61fa2","fromNode":"1498cae6eb1903d1","fromSide":"right","toNode":"9c72f4c434a7b6f7","toSide":"left"},
-		{"id":"58ef55346f06bd18","fromNode":"c426835df20fd0f6","fromSide":"right","toNode":"9c72f4c434a7b6f7","toSide":"left"}
+		{"id":"58ef55346f06bd18","fromNode":"c426835df20fd0f6","fromSide":"right","toNode":"9c72f4c434a7b6f7","toSide":"left"},
+		{"id":"496b2cd7a2906d7f","fromNode":"c4b376487573eb22","fromSide":"right","toNode":"c426835df20fd0f6","toSide":"left"},
+		{"id":"40aaff4de4b52ead","fromNode":"c4b376487573eb22","fromSide":"right","toNode":"1498cae6eb1903d1","toSide":"left"},
+		{"id":"fdf1657a743016ec","fromNode":"c4b376487573eb22","fromSide":"right","toNode":"652204fd60716209","toSide":"left"},
+		{"id":"c9ad4b219baf95b2","fromNode":"b02aeefb9215f6bb","fromSide":"right","toNode":"9bd3a990df363ff0","toSide":"left"}
 	]
 }
